@@ -17,7 +17,7 @@ class QuadraticEquation:
         print(self)
 
     def solutions_number(self):
-        # залежить від дискримінанту
+        # залежить від дискримінанта
         return 0
 
     def solve(self):
