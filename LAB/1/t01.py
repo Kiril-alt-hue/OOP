@@ -22,6 +22,7 @@ class QuadraticEquation:
 
     def solve(self):
 
+
         # треба буде дискримінант - будемо використовувати self.d
         return ()  # список чи кортеж розвʼязків
 
