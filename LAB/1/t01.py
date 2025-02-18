@@ -44,6 +44,7 @@ class QuadraticEquation:
             return solve_lst  # список чи кортеж розвʼязків
 
 
+
 if __name__ == '__main__':  # блок тестування класу
     eq = QuadraticEquation(0, 4, 2)
     # eq.show()
