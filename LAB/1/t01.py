@@ -22,7 +22,7 @@ class QuadraticEquation:
         #return 0
 
     def solve(self):
-        solve_lst = ()
+        solve_lst = []
         if self.a == 0:
             if self.b == 0:
                 if self.c == 0:
@@ -30,27 +30,28 @@ class QuadraticEquation:
                 else:
                     return "Розв'язків не існує"
             else:
-                solve_lst += -self.c / self.b
+                  solve_lst.append(-self.c/self.b)
+                  return solve_lst                                  #return -self.c / self.b
         else:
             d = self.discriminant()
             if d < 0:
-                return ()
+                return "Дискримінант менше за нуль -> розв'язків не існує"
             elif d == 0:
-                solve_lst += -(self.b / 2 * self.a)
+                solve_lst.append(-self.b / 2 * self.a)
             else:
-                solve_lst += (-self.b + d**0.5)/2 * self.a
-                solve_lst += (-self.b - d ** 0.5) / 2 * self.a
+                solve_lst.append((-self.b + d**0.5)/2 * self.a)
+                solve_lst.append((-self.b - d ** 0.5)/ 2 * self.a)
 
             return solve_lst  # список чи кортеж розвʼязків
 
 
 
 if __name__ == '__main__':  # блок тестування класу
-    eq = QuadraticEquation(0, 4, 2)
+    eq = QuadraticEquation( -25, 0, 48)
     # eq.show()
     print(eq)
-    print(f"Дискримінант рівняння {eq} буде {eq.discriminant()}. "
-          f" Розв'язки рівняння - {eq.solve()}")
+    print(f"Дискримінант рівняння {eq} буде {eq.discriminant()}."
+          f" Розв'язки рівняння -> {eq.solve()}")
           #f"Розв'язки рівняння - {}")
     # eq.discriminant() = 100500
     #eq.a = 100560
