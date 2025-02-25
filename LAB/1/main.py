@@ -37,6 +37,7 @@ for eq in equations:
     elif len(solution) == 2:
         two_solut.append(eq)
 
+
 print(f"Рівняння, що мають 0 розв'язків - {}")
 
 

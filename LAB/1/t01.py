@@ -52,6 +52,7 @@ class QuadraticEquation:
 if __name__ == '__main__':  # блок тестування класу
     eq = QuadraticEquation(0, 0, 0 )
     # eq.show()
+
     print(eq)
     print(f"Дискримінант рівняння {eq} буде {eq.discriminant()}."
           f" Розв'язки рівняння -> {eq.solve()}")
