@@ -1,4 +1,7 @@
 class QuadraticEquation:
+
+    INF = "Infinite number of solutions"
+
     def __init__(self, a, b, c):
         self.a = a
         self.b = b
@@ -23,31 +26,31 @@ class QuadraticEquation:
 
     def solve(self):
         solve_lst = []
-        if self.a == 0:
+        if self.a == 0: # вироджене квадратне рівняння
             if self.b == 0:
                 if self.c == 0:
-                    return "Безліч розв'язків"
+                    return QuadraticEquation.INF
                 else:
-                    return "Розв'язків не існує"
+                    return () #"Розв'язків не існує"
             else:
                   solve_lst.append(-self.c/self.b)
                   return solve_lst                                  #return -self.c / self.b
         else:
             d = self.discriminant()
-            if d < 0:
-                return "Дискримінант менше за нуль -> розв'язків не існує"
-            elif d == 0:
-                solve_lst.append(-self.b / 2 * self.a)
-            else:
-                solve_lst.append((-self.b + d**0.5)/2 * self.a)
-                solve_lst.append((-self.b - d ** 0.5)/ 2 * self.a)
+            if d < 0: # немає розв'язків
+                return ()# "Дискримінант менше за нуль -> Розв'язків не існує"
+            elif d == 0: # є один розв'язок
+                solve_lst.append((-self.b)/ (2 * self.a))
+            else: # два корені
+                solve_lst.append(-self.b + d ** 0.5/ (2 * self.a))
+                solve_lst.append((-self.b - d ** 0.5)/ (2 * self.a))
 
-            return solve_lst  # список чи кортеж розвʼязків
+            return sorted(solve_lst) # список чи кортеж розвʼязків
 
 
 
 if __name__ == '__main__':  # блок тестування класу
-    eq = QuadraticEquation( -25, 0, 48)
+    eq = QuadraticEquation(0, 0, 0 )
     # eq.show()
     print(eq)
     print(f"Дискримінант рівняння {eq} буде {eq.discriminant()}."
