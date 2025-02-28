@@ -3,6 +3,7 @@ from Vector2D import Vector2D
 from Solver import Solver
 import sys
 
+
 def solve(matrix_file, rhs_file, out_file = None):
     lst = []
     with open (matrix_file, "r") as f:
