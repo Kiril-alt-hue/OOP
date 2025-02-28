@@ -33,7 +33,7 @@ class Solver:
         return Vector2D(x1, x2)
 
 if __name__ == "__main__":
-    A = Matrix2D(1, 2, 2, 1)
+    A = Matrix2D(-7, 1, -7, 4)
     b = Vector2D(4, 5)
     s = Solver(A, b)
     #print(s)
