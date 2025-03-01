@@ -1,0 +1,12 @@
+Circle 5
+Rectangle 10 20
+Triangle 3 4 5
+Trapeze 10 6 4 5
+Parallelogram 8 12 6
+Triangle 1 2 10
+Trapeze 10 6 7 7
+Circle 8
+Rectangle 15 10
+Triangle 7 24 25
+
+# мої вхідні дані для перевірки. можете спробувати аби подивитися, що все працює :)
