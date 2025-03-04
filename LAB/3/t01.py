@@ -1,18 +1,16 @@
-from turtle import * # Підключаємо модуль turtle
+from turtle import *
 from random import randint, choice
+from math import sin, cos, radians
 
 
 class Triangle:
-
     def __init__(self, x1, y1, x2, y2):
-        self.__position = (0, 0)   # абсолютна позиція першої вершини
-        self.__vertex1 = (x1, y1)  # позиція другої відносно першої вершини
-        self.__vertex2 = (x2, y2)  # позиція третьої відносно першої вершини
-
-        self._color = "lightblue"     # колір трикутника за промовчанням
-
-
-
+        self.__position = (0, 0)
+        self.__vertex1 = (x1, y1)
+        self.__vertex2 = (x2, y2)
+        self._color = "lightblue"
+        self.rotation = 0  #обертання у градусах
+        self.scale = (1, 1)  #масштабування (1,1) означає без змін
 
     @property
     def position(self):
@@ -31,27 +29,35 @@ class Triangle:
     def color(self, color):
         self._color = color
 
+    def set_rotation(self, rotation):
+        self.rotation = rotation
 
-    def __str__(self):
-        return f"Triangle: {self.__position, self.__vertex1, self.__vertex2}"
+    def set_scale(self, scale_x, scale_y):
+        self.scale = (scale_x, scale_y)
+
+    def rotate_point(self, x, y):
+        angle = radians(self.rotation)
+        new_x = x * cos(angle) - y * sin(angle)
+        new_y = x * sin(angle) + y * cos(angle)
+        return new_x, new_y
+
+    def scale_point(self, x, y):
+        return x * self.scale[0], y * self.scale[1]
 
     def draw(self):
-        up() # перестраховка, якщо пензлик був опущений
-
+        up()
         goto(self.__position)
-
         down()
-
         fillcolor(self._color)
         begin_fill()
 
-        # зміщені координати для vertex1
-        x, y = self.__position[0] + self.__vertex1[0], self.__position[1] + self.__vertex1[1]
-        setpos(x, y)
+        x1, y1 = self.scale_point(*self.__vertex1)
+        x1, y1 = self.rotate_point(x1, y1)
+        setpos(self.__position[0] + x1, self.__position[1] + y1)
 
-        # зміщені координати для vertex1
-        x, y = self.__position[0] + self.__vertex2[0], self.__position[1] + self.__vertex2[1]
-        setpos(x, y)
+        x2, y2 = self.scale_point(*self.__vertex2)
+        x2, y2 = self.rotate_point(x2, y2)
+        setpos(self.__position[0] + x2, self.__position[1] + y2)
         setpos(self.__position)
 
         end_fill()
@@ -60,20 +66,24 @@ class Triangle:
 
 if __name__ == '__main__':
     reset()
-    speed(5)
+    speed(0)
     colors = ["red", "orange", "yellow", "green", "blue", "lightblue", "purple"]
 
-    t = Triangle(100, 0, 100, 100)
-    print(t)
+    triangles = []
+    for _ in range(100):
+        x1, y1 = randint(-50, 50), randint(-50, 50)
+        x2, y2 = randint(-50, 50), randint(-50, 50)
 
-    for i in range(100):
-        x1 = randint(-400, 400)
-        y1 = randint(-400, 400)
+        t = Triangle(x1, y1, x2, y2)
 
+        t.position = (randint(-400, 400), randint(-400, 400))
 
-
-        t.position = (x1, y1)
         t.color = choice(colors)
+
+        t.set_rotation(randint(0, 360))
+        t.set_scale(randint(1, 3), randint(1, 3))
+        triangles.append(t)
+
         t.draw()
 
-    mainloop()       # Затримуємо вікно на екрані
+    mainloop()
