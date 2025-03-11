@@ -11,9 +11,9 @@ def process_equations(file_name):
                 if coefficients[0] == 0:
                     eq = t01.Equation(coefficients[1], coefficients[2])
                 else:
-                    eq = t01.QudraticEquation(*coefficients)
+                    eq = t01.QuadraticEquation(*coefficients)
             elif len(coefficients) == 4:
-                eq = t01.BiOudraticEquation(coefficients[1], coefficients[2], coefficients[3])
+                eq = t01.BiQuadraticEquation(coefficients[1], coefficients[2], coefficients[3])
             else:
                 continue
             equations.append(eq)
