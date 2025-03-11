@@ -36,7 +36,7 @@ class QuadraticEquation(Equation):
         elif d == 0:
             return (-self.b / (2 * self.a),)
         else:
-            return ((-self.b + math.sqrt(d)) / (2 * self.a), (-self.b - math.sqrt(d)) / (2 * self.a))
+            return (-self.b + math.sqrt(d)) / (2 * self.a), (-self.b - math.sqrt(d)) / (2 * self.a)
 
     def show(self):
         print(f"{self.a}x^2 + {self.b}x + {self.c} = 0")
@@ -63,3 +63,22 @@ class BiQuadraticEquation(QuadraticEquation):
 
     def show(self):
         print(f"{self.a}x^4 + {self.b}x^2 + {self.c} = 0")
+
+if __name__ == "__main__":
+
+    linear_eq = Equation(2, 3)
+    print("Лінійне рівняння:")
+    linear_eq.show()
+    print("Розв'язок:", linear_eq.solve())
+
+
+    quadratic_eq = QuadraticEquation(1, -5, 6)
+    print("\nКвадратне рівняння:")
+    quadratic_eq.show()
+    print("Розв'язок:", quadratic_eq.solve())
+
+
+    biquadratic_eq = BiQuadraticEquation(1, -5, 4)
+    print("\nБіквадратне рівняння:")
+    biquadratic_eq.show()
+    print("Розв'язок:", biquadratic_eq.solve())
