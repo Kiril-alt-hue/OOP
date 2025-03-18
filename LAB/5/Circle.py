@@ -1,27 +1,29 @@
-import math
-from Figure import Figure
 from turtle import *
+from Figure import Figure
+
 
 class Circle(Figure):
-    def __init__(self, radius):
-        super().__init__()
-        self.__radius = radius
+    """ Клас Коло """
 
-    @property
-    def radius(self):
-        return self.__radius
+    def __init__(self, x, y, r, color):
+        """ Конструктор
+        Ініціалізує положення кола, його радіус і колір
+        :param x: координата x центру кола
+        :param y: координата y центру кола
+        :param r: радіус кола
+        :param color: колір кола
+        """
+        super().__init__(x, y, color)  # Обов’язковий виклик конструктора базового класу
+        self._r = r  # _r - радіус кола
 
-    @radius.setter
-    def radius(self, r):
-        assert r > 0
-        self.__radius = r
-
-    def draw(self):
-        super().draw()
+    def _draw(self, color):
+        """ Допоміжний метод, що зображує коло заданим кольором
+        :param color: колір
+        """
+        pencolor(color)
         up()
-        pencolor(self.color)
-        x, y = self._calc_position((self.position[0], self.position[1] - self.__radius))
-        goto(x, y)
+        # малює починаючи знизу кола
+        setpos(self._x, self._y - self._r)
         down()
-        circle(self.__radius * self.scale[0])
+        circle(self._r)
         up()

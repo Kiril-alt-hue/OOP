@@ -1,27 +1,44 @@
-from Figure import Figure
 from turtle import *
 
+from Figure import Figure
+
+
 class Trapezoid(Figure):
-    def __init__(self, base1, base2, height):
-        super().__init__()
-        self.base1 = base1
-        self.base2 = base2
-        self.height = height
+    """ Клас Трапеція
 
-    def draw(self):
-        super().draw()
+    Використовується для зображення рівнобічної трапеції на екрані
+    """
+
+    def __init__(self, x, y, a, b, color):
+        """ Конструктор
+        Ініціалізує положення лівої нижньої вершини,
+        довжини його основ і колір.
+        :param x: координата x лівої нижньої вершини
+        :param y: координата y лівої нижньої вершини
+        :param a: довжина більшох основий трапеції
+        :param b: довжина меншої основий трапеції
+        :param color: колір трапеції
+        """
+
+        super().__init__(x, y, color)  # виклик конструктора базового класу
+        self.a = a
+        self.b = b
+
+    def _draw(self, color):
+        """ Віртуальний метод, що зображує трапецію на екрані заданим кольором
+        :param color: колір
+        """
+        pencolor(color)
         up()
-        pencolor(self.color)
-
-        x0, y0 = self.position
-        x1, y1 = x0 + self.base1, y0
-        x2, y2 = x0 + (self.base1 - self.base2) / 2, y0 + self.height
-        x3, y3 = x2 + self.base2, y2
-
-        setpos(self._calc_position((x0, y0)))
+        setpos(self._x, self._y)
         down()
-        setpos(self._calc_position((x1, y1)))
-        setpos(self._calc_position((x3, y3)))
-        setpos(self._calc_position((x2, y2)))
-        setpos(self._calc_position((x0, y0)))
+        forward(self.a)
+        left(120)
+        side_len = ((self.a - self.b) / 2) * (3 ** 0.5)
+        forward(side_len)
+        left(60)
+        forward(self.b)
+        left(60)
+        forward(side_len)
+        left(120)
         up()

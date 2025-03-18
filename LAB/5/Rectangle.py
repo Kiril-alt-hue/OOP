@@ -1,26 +1,38 @@
-from Figure import Figure
 from turtle import *
+from Figure import Figure
+
 
 class Rectangle(Figure):
-    def __init__(self, width, height):
-        super().__init__()
-        self.__width = width
-        self.__height = height
+    """ Клас Прямокутник
 
-    def draw(self):
-        super().draw()
+    Використовується для зображення прямокутника на екрані
+    """
+
+    def __init__(self, x, y, a, b, color):
+        """ Конструктор
+        Ініціалізує положення лівої нижньої вершини,
+        довжини його основ і колір.
+        :param x: координата x лівої нижньої вершини
+        :param y: координата y лівої нижньої вершини
+        :param a: перша сторона прямокутника
+        :param b: друга сторона прямокутника
+        :param color: колір прямокутника
+        """
+        super().__init__(x, y, color)  # виклик конструктора базового класу
+        self.a = a
+        self.b = b
+
+    def _draw(self, color):
+        """ Віртуальний метод, що зображує прямокутник на екрані заданим кольором
+        :param color: колір
+        """
+        pencolor(color)
         up()
-        pencolor(self.color)
-
-        v0 = self.position
-        v1 = (self.position[0] + self.__width, self.position[1])
-        v2 = (self.position[0] + self.__width, self.position[1] + self.__height)
-        v3 = (self.position[0], self.position[1] + self.__height)
-
-        setpos(self._calc_position(v0))
+        setpos(self._x, self._y)
         down()
-        setpos(self._calc_position(v1))
-        setpos(self._calc_position(v2))
-        setpos(self._calc_position(v3))
-        setpos(self._calc_position(v0))
+        for i in range(2):
+            forward(self.a)
+            left(90)
+            forward(self.b)
+            left(90)
         up()

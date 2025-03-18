@@ -1,23 +1,36 @@
-from Figure import Figure
 from turtle import *
 
+from Figure import Figure
+
+
 class Triangle(Figure):
-    def __init__(self, side_length):
-        super().__init__()
-        self.__side_length = side_length
+    """ Клас Трикутник
 
-    def draw(self):
-        super().draw()
+    Використовується для зображення правильного трикутника на екрані
+    """
+
+    def __init__(self, x, y, a, color):
+        """ Конструктор
+        Ініціалізує положення лівого нижньої вершини трикутника,
+        довжину його сторони і колір.
+        :param x: координата x лівої нижньої вершини трикутника
+        :param y: координата y лівої нижньої вершини трикутника
+        :param a: довжина сторони трикутника
+        :param color: колір трикутника
+        """
+
+        super().__init__(x, y, color)  # виклик конструктора базового класу
+        self.a = a
+
+    def _draw(self, color):
+        """ Допоміжний віртуальний метод, що зображує трикутник заданим кольором
+        :param color: колір
+        """
+        pencolor(color)
         up()
-        pencolor(self.color)
-
-        v0 = self.position
-        v1 = (self.position[0] + self.__side_length, self.position[1])
-        v2 = (self.position[0] + self.__side_length / 2, self.position[1] + (self.__side_length * (3 ** 0.5) / 2))
-
-        setpos(self._calc_position(v0))
+        setpos(self._x, self._y)
         down()
-        setpos(self._calc_position(v1))
-        setpos(self._calc_position(v2))
-        setpos(self._calc_position(v0))
+        for i in range(3):
+            forward(self.a)
+            left(120)
         up()
