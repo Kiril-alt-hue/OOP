@@ -1,0 +1,127 @@
+classDiagram
+    Figure <|-- Triangle
+    Figure <|-- Rectangle
+    Figure <|-- Trapeze
+    Figure <|-- Parallelogram
+    Figure <|-- Circle
+    Figure <|-- Ball
+    Triangle <|-- TriangularPyramid
+    Triangle <|-- TriangularPrism
+    Rectangle <|-- QuadrangularPyramid
+    Rectangle <|-- RectangularParallelepiped
+    Circle <|-- Cone
+
+    class Figure {
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
+
+    class Triangle {
+        -sides: list
+        +__init__(sides: list)
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +volume() -> float
+    }
+
+    class Rectangle {
+        -sides: list
+        +__init__(sides: list)
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +volume() -> float
+    }
+
+    class Trapeze {
+        -bases: list
+        -sides: list
+        +__init__(bases: list, sides: list)
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +volume() -> float
+    }
+
+    class Parallelogram {
+        -sides: list
+        -h: float
+        +__init__(sides: list, height: float)
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +volume() -> float
+    }
+
+    class Circle {
+        -radius: float
+        +__init__(radius: float)
+        +dimention() -> str
+        +perimetr() -> float
+        +square() -> float
+        +volume() -> float
+    }
+
+    class Ball {
+        -radius: float
+        +__init__(radius: float)
+        +dimention() -> str
+        +squareSurface() -> float
+        +volume() -> float
+    }
+
+    class TriangularPyramid {
+        -h: float
+        +__init__(base_side: float, height: float)
+        +dimention() -> str
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
+
+    class TriangularPrism {
+        -h: float
+        +__init__(sides: list, height: float)
+        +dimention() -> str
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
+
+    class QuadrangularPyramid {
+        -h: float
+        +__init__(base_sides: list, height: float)
+        +dimention() -> str
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
+
+    class RectangularParallelepiped {
+        -h: float
+        +__init__(sides: list)
+        +dimention() -> str
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
+
+    class Cone {
+        -h: float
+        +__init__(radius: float, height: float)
+        +dimention() -> str
+        +squareSurface() -> float
+        +squareBase() -> float
+        +height() -> float
+        +volume() -> float
+    }
