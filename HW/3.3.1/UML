@@ -1,3 +1,5 @@
+@startuml
+
 classDiagram
     Figure <|-- Triangle
     Figure <|-- Rectangle
@@ -125,3 +127,5 @@ classDiagram
         +height() -> float
         +volume() -> float
     }
+
+@enduml
