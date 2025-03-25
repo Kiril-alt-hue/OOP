@@ -7,11 +7,6 @@ from Trapezoid import Trapezoid
 import time
 
 class Car(Figure):
-    """ Клас Машина
-
-    Використовується для зображення машини, складеної з геометричних фігур.
-    """
-
     def __init__(self, x, y, body_width, body_height, wheel_radius, color):
         super().__init__(x, y, color)
 

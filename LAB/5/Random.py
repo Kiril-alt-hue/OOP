@@ -9,14 +9,10 @@ from Triangle import Triangle
 
 
 def random_color():
-    """Генерує випадковий колір у форматі рядка."""
     colors = ["red", "green", "blue", "yellow", "purple", "orange", "pink", "cyan", "magenta", "brown"]
     return choice(colors)
 
 def create_random_figure():
-    """
-    Створює випадкову фігуру з випадковими параметрами.
-    """
     x = randint(-300, 300)  # Випадкова координата x
     y = randint(-300, 300)  # Випадкова координата y
     color = random_color()  # Випадковий колір
@@ -43,9 +39,6 @@ def create_random_figure():
         return Trapezoid(x, y, a, b, color)
 
 def main():
-    """
-    Головна функція для малювання 100 випадкових фігур.
-    """
     bgcolor("white")  # Колір фону
     tracer(0, 0)  # Вимкнення анімації для швидкого малювання
     figures = []

@@ -10,7 +10,6 @@ from turtle import *
 
 
 if __name__ == '__main__':
-    # Ініціалізація turtle
     home()
     delay(30)
 
