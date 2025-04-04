@@ -18,4 +18,4 @@ class Figure:
         return None
 
     def volume(self):
-        return 0.0
+        return
