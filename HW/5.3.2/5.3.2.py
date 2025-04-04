@@ -124,7 +124,7 @@ def process_file(input_filename, output_filename):
 
 if __name__ == "__main__":
     input_filename = "input.txt"
-    output_filename = "output.txt"
+    output_filename = "output_5.3.2.txt"
     print(f"Початок обчислення суми чисел з файлу {input_filename}")
     process_file(input_filename, output_filename)
     print("Обчислення завершено")
