@@ -199,18 +199,22 @@ def evaluate_expression(expr):
 
 
 def process_file(filename):
-    with open(filename, 'r') as file:
+    with open(filename, 'r') as file, open('output.txt', 'w', encoding="utf-8") as output_file:
         for line in file:
             line = line.strip()
             if line:
                 try:
                     result = evaluate_expression(line)
-                    print(f"{line} = {result} (десятковий: {result():.6f})")
+                    output_line = f"{line} = {result} (десятковий: {result():.6f})\n"
+                    print(output_line.strip())  # Вивід у консоль
+                    output_file.write(output_line)  # Запис у файл
                 except Exception as e:
-                    print(f"Помилка при обчисленні виразу '{line}': {e}")
+                    error_line = f"Помилка при обчисленні виразу '{line}': {e}\n"
+                    print(error_line.strip())  # Вивід у консоль
+                    output_file.write(error_line)  # Запис у файл
 
 
-# ==================================Головна частина програми ==============================================
+# ================================== Головна частина програми ==============================================
 
 if __name__ == "__main__":
     print("Початок обчислення виразів з файлу input.txt")
