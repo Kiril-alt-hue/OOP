@@ -25,6 +25,6 @@ def det(n):
         d_prev_1, d_prev_2 = d_prev_2, d
         yield d
 
-if __name__ == "__main__":
-    for
+#if __name__ == "__main__":
+
 
